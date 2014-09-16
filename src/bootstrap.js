@@ -68,10 +68,10 @@ function makeOneLine(window) {
   let origNav = Array.slice(navBar.childNodes);
 
   // Create a new search button that can prefill the search input box
-  let search = createNode("toolbarbutton");
-  search.setAttribute("class", "toolbarbutton-1 chromeclass-toolbar-additional");
-  search.setAttribute("image", images.search16);
-  search.addEventListener("command", function() {
+  //let search = createNode("toolbarbutton");
+  //search.setAttribute("class", "toolbarbutton-1 chromeclass-toolbar-additional");
+  //search.setAttribute("image", images.search16);
+  /*search.addEventListener("command", function() {
     let browser = gBrowser.selectedBrowser;
 
     // See if we should copy over the value in the input when searching
@@ -121,7 +121,7 @@ function makeOneLine(window) {
       // Clear out the location bar so it shows the placeholder text
       gURLBar.value = "";
     }, false);
-  }, false);
+  }, false);*/
 
   // Move the navigation controls to the tabs bar
   let navOrder = [backForward, urlContainer, reload, stop];
@@ -129,7 +129,7 @@ function makeOneLine(window) {
     if (node != null)
       tabsBar.insertBefore(node, tabsBar.firstChild);
   });
-  tabsBar.appendChild(search);
+  //tabsBar.appendChild(search);
   tabsBar.appendChild(downloadsButton);
 
   // Create a dummy backForward object if we don't have the node
@@ -148,7 +148,7 @@ function makeOneLine(window) {
 
   // Clean up various changes when the add-on unloads
   unload(function() {
-    tabsBar.removeChild(search);
+    //tabsBar.removeChild(search);
     origNav.forEach(function(node) navBar.appendChild(node));
 
     backForward.style.marginRight = "";
@@ -187,12 +187,12 @@ function makeOneLine(window) {
   });
 
   // Do the custom search button command instead of the original
-  listen(commands, "command", function(event) {
+  /*listen(commands, "command", function(event) {
     if (event.target.id == "Tools:Search") {
       event.stopPropagation();
       search.doCommand();
     }
-  });
+  });*/
 
   // Make sure we set the right size of the urlbar on blur or focus
   listen(gURLBar, "blur", function() updateBackForward());
