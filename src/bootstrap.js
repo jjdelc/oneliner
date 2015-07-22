@@ -57,11 +57,11 @@ function makeOneLine(window) {
   let [commands,
        navBar, tabsBar,
        backForward, urlContainer, reload, stop,
-       backCmd, forwardCmd, downloadsButton] =
+       backCmd, forwardCmd, downloadsButton, panelButton] =
     ["mainCommandSet",
      "nav-bar", "TabsToolbar",
      "unified-back-forward-button", "urlbar-container", "reload-button", "stop-button",
-     "Browser:Back", "Browser:Forward", "downloads-button"
+     "Browser:Back", "Browser:Forward", "downloads-button", "PanelUI-button"
     ].map(function(id) document.getElementById(id));
 
   // Save the order of elements in the navigation bar to restore later
@@ -131,6 +131,7 @@ function makeOneLine(window) {
   });
   //tabsBar.appendChild(search);
   tabsBar.appendChild(downloadsButton);
+  tabsBar.appendChild(panelButton);
 
   // Create a dummy backForward object if we don't have the node
   backForward = backForward || {
